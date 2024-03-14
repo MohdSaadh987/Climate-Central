@@ -1,0 +1,20 @@
+{% extends 'weather_api/nav.html' %}
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+  </head>
+ <body>
+  {% block content %}
+
+  <marquee>
+    <p>Live Satellite and Radar images</p>
+  </marquee>
+    
+  <iframe src="https://www.meteoblue.com/en/weather/maps/widget/delhi_india_2661604?windAnimation=0&windAnimation=1&gust=0&gust=1&satellite=0&satellite=1&cloudsAndPrecipitation=0&cloudsAndPrecipitation=1&temperature=0&sunshine=0&extremeForecastIndex=0&extremeForecastIndex=1&geoloc=fixed&tempunit=C&windunit=km%252Fh&lengthunit=metric&zoom=5&autowidth=auto"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox" style="width: 100%; height: 500px"></iframe>
+{% endblock %}
+</body>
+</html>

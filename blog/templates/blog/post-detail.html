@@ -1,0 +1,46 @@
+
+{% load static %} 
+
+{% block title %} 
+{{ post.title }}
+{% endblock %} 
+
+{% block css_files %} 
+<link rel="stylesheet" href="{% static "blog/post-detail.css" %}" /> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <link rel="stylesheet" href="{% static "app.css" %}">
+  
+</head>
+<body>
+  <header id="main-navigation">
+    <h1><a href="{% url "starting-page" %}">Climate Central Blog</a></h1>
+    <nav>
+      <a href="{% url "posts-page" %}">All Posts</a>
+    </nav>
+  </header>
+{% endblock %} 
+
+{% block content %}
+<section id="summary">
+  <h2>{{ post.title }}</h2>
+  <div>
+    {% for tag in post_tags %}
+      <span class="tag">{{ tag.caption }}</span>
+    {% endfor %}
+  </div>
+  <article>
+    <img src="{{ post.image.url }}" alt="{{ post.title }}" />
+    <address>By <a href="mailto:{{ post.author.email_address }}">{{ post.author }}</a></address>
+    <div>Last updated on <time>{{ post.date|date:"d M Y" }}</time></div>
+  </article>
+</section>
+
+<main>
+  {{ post.content|linebreaks }}
+</main>
+{% endblock %}

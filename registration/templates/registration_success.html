@@ -1,0 +1,221 @@
+<!-- registration_success.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+  <title>{% block title %}{% endblock %}</title>
+
+    <!-- Loading third party fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+    <link href="{% static 'fonts/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Loading main css file -->
+
+  </head>
+  <style>
+    img {
+      border-radius: 30%;
+      position: relative;
+    }
+
+    
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+  height: 100%;
+  width: 0;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: rgb(0,0,0); /* Black fallback color */
+  background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  top: 25%; /* 25% from the top */
+  width: 100%; /* 100% width */
+  text-align: center; /* Centered text/links */
+  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+  color: #08a5f3;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+.container {
+    text-align: center;
+  }
+
+  .container img {
+    display: inline-block;
+  }
+    </style>
+
+  <body>
+
+    <div class="site-content">
+      <div class="site-header">
+        <div class="container">
+          <a href="{% url 'home' %}" class="branding">
+            <img src="{%static 'images/logo.jpg' %}" alt="Avatar" style="width:50px">
+            <div class="logo-type">
+              <h1 class="site-title"> Climate Central </h1>
+              <small class="site-description">Real time weather forecast</small>
+            </div>
+          </a>
+
+         <!-- Default snippet for navigation -->
+         <div class="main-navigation">
+          <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+          <ul class="menu">
+            <li class="menu-item current-menu-item" id="omar"><a href="{% url 'home' %}">Home</a></li>
+            <div class="main-navigation">
+              <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+              <ul class="menu">
+                <li class="menu-item current-menu-item" id="omar"><a href="{% url 'satellite_radar' %}">Satellite And Radar</a></li>
+                <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+                <ul class="menu">
+                  &nbsp;
+                  &nbsp;
+                  &nbsp;
+                  <!-- The overlay -->
+<div id="myNav" class="overlay">
+
+<!-- Button to close the overlay navigation -->
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+<!-- Overlay content -->
+<div class="overlay-content">
+  <a href="{% url "starting-page" %}">Blog</a>
+  <a href="{% url 'index' %}">Weather Gallery</a>
+  <a href="{% url 'Alert' %}">Weather Alerts</a>
+  <a href="{% url 'registration' %}">Register</a>
+</div>
+
+</div>
+
+<!-- Use any element to open/show the overlay navigation menu -->
+<span onclick="openNav()" ><i style="font-size:28px;color:rgb(0, 174, 255);"  class="fa" >&#xf0c9;</i></li></span>
+                  
+            </ul> <!-- .menu -->
+          </div> <!-- .main-navigation -->
+
+          <div class="mobile-navigation"></div>
+
+        </div>
+      </div>
+      </div> <!-- .site-header -->
+
+     <br>
+     <br>
+     {% block content %}
+     <!DOCTYPE html>
+     <html>
+     <head>
+         <title>Registration Successful</title>
+     </head>
+     <body>
+        <div class="container">
+         <h1>Registration Successful</h1>
+         <p>Your registration has been successful. Welcome!</p>
+        </div>
+     </body>
+     </html>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     {% endblock content %}
+
+     <br>
+     <br>
+
+      <footer class="site-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+              <form action="#" class="subscribe-form">
+                <input type="text" placeholder="Enter your email..." required>
+                <input type="submit" value="Subscribe" required>
+              </form>
+            </div>
+            <div class="col-md-3 col-md-offset-1">
+              <div class="social-links">
+                <a href="" target="_blank"><i class="fa fa-globe"></i></a>
+                <a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                <a target="_blank" href="https://www.instagram.com"><i class="fa fa-instagram"></i></a>
+                <a target="_blank" href="https://www.twitter.com/"><i class="fa fa-twitter"></i></a>
+                <a target="_blank" href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <p class="colophon">Copyright 2023, All rights reserved Climate Central</p>
+        </div>
+      </footer> <!-- .site-footer -->
+    </div>
+
+    <script src="{%static 'js/jquery-1.11.1.min.js' %}"></script>
+    <script src="{%static 'js/plugins.js' %}"></script>
+    <script src="{%static 'js/app.js' %}"></script>
+    <script>
+      /* Open when someone clicks on the span element */
+function openNav() {
+  document.getElementById("myNav").style.width = "100%";
+}
+
+/* Close when someone clicks on the "x" symbol inside the overlay */
+function closeNav() {
+  document.getElementById("myNav").style.width = "0%";
+}
+    </script>
+  </body>
+
+</html>
+
+
+

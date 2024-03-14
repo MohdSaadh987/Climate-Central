@@ -1,0 +1,39 @@
+
+{% load static %}
+
+{% block title %} 
+All My Posts
+{% endblock %} 
+
+{% block css_files %}
+  <link rel="stylesheet" href="{% static "blog/post.css" %}" />
+  <link rel="stylesheet" href="{% static "blog/all-posts.css" %}" />
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <link rel="stylesheet" href="{% static "app.css" %}">
+  
+</head>
+<body>
+  <header id="main-navigation">
+    <h1><a href="{% url "starting-page" %}">Climate Central Blog</a></h1>
+    <nav>
+      <a href="{% url "posts-page" %}">All Posts</a>
+    </nav>
+  </header>
+{% endblock %}
+
+{% block content %}
+<section id="all-posts">
+  <h2>My Collected Posts</h2>
+
+  <ul>
+    {% for post in all_posts %}
+      {% include "blog/includes/post.html" %}
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}
